@@ -109,6 +109,7 @@ const films = [
 ];
 
 function showFilms(films) {
+	//const sortedFilms = orderByRatingDescending(films); // Se ordenan las películas por rating
 
     const formatedFilms = films.map((film, i) => {
         return `🎥 ${i}.- ${film.title} <br> 
@@ -129,14 +130,34 @@ function searchByCriteria() {
     //showFilms()
 }
 
-function sortByRatingDesc() {
-    //showFilms()
-}
+function sortByRatingAsc() {  
+	films.sort((a, b) => a.imdbRating - b.imdbRating);
+	showFilms(films);
+  }
 
-function sortByRatingAsc() {
-    //showFilms()
-}
-
+/*function findByGenre(genre) {
+	const filmsFiltrados = films.filter(film => film.genre === genre);
+    showFilms(filmsFiltrados);
+}*/
 function findByGenre(genre) {
-    //showFilms()
+	let filteredFilms;
+
+	console.log(genre)
+
+  
+	/*for (let i = 0; i < films.genre.length; i++) {
+	  filteredFilms = films.filter(film => film.genre === genre);
+	}*/
+  
+	//showFilms(filteredFilms);
+  }
+
+
+
+
+
+
+function sortByRatingDesc() {
+	films.sort((a, b) =>  b.imdbRating - a.imdbRating);
+  showFilms(films);
 }
