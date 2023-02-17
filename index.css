@@ -127,3 +127,7 @@ main {
 .text {
     color: #fff;
 }
+#poster img {
+	width: 20px;
+	height: 30px;
+  }
