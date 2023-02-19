@@ -119,7 +119,7 @@ function showFilms(films) {
             Director: ${film.director} <br> 
             Actors: ${film.actors} <br> 
             ImdbRating: ${film.imdbRating} <br>`
-		
+
 	});
 
 	document.getElementById('films').innerHTML = formatedFilms.join('<br><br>')
@@ -127,9 +127,20 @@ function showFilms(films) {
 
 showFilms(films);
 
-function searchByCriteria() {
+function searchFilmsByCriteria() {
+	debugger
 
-	//showFilms()
+	const searchValue = document.getElementById('search-button').value;
+	const filteredFilms = films.filter(film => {
+		const searchValueLowercase = searchValue.toLowerCase();
+		return (
+			film.title.toLowerCase().includes(searchValueLowercase) ||
+			film.genre.toLowerCase().includes(searchValueLowercase) ||
+			film.director.toLowerCase().includes(searchValueLowercase) ||
+			film.actors.toLowerCase().includes(searchValueLowercase)
+		);
+	});
+	showFilms(filteredFilms);
 }
 
 function sortByRatingAsc() {
@@ -151,10 +162,10 @@ function findByGenre(genre) {
 		if (pelicula.genre.includes(genre)) {
 			peliculasFiltradas.push(pelicula);
 		}
-		
+
 	});
 
-	
+
 	console.log(`Peliculas filtradas: ${peliculasFiltradas}`);
 
 	// for (let i = 0; i < films.genre.length; i++) {
